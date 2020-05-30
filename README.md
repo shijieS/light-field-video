@@ -12,8 +12,8 @@ Light Field Video Capture Using a Learning-Based Hybrid Imaging System
 In ACM Transactions on Graphics (SIGGRAPH 2017)
 
 ### Prerequisites
-- Linux. (The code should work on OSX/Windows with minimal modification)
-- OpenMP, [OpenCV](http://milq.github.io/install-opencv-ubuntu-debian/), [QT 5.7](https://wiki.qt.io/Install_Qt_5_on_Ubuntu), [cmake](http://askubuntu.com/questions/610291/how-to-install-cmake-3-2-on-ubuntu-14-04).
+- Linux. (Window10 with vs2017 works)
+- OpenMP, [OpenCV3.4], [QT 5.10], [cmake].
 
 
 ### Getting Started
