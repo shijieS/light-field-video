@@ -13,6 +13,7 @@ public:
 	static void AddSuffix(vectorString& _nameVec, string _suffix, vectorString& _outNameVec);
 	static void mkdirs( vectorString _dirNameVec);
 	static void mkdirs(string _dirName);
+	int FindFiles(string _fName, vector<string>& _nameVec);
 private:
 	static bool ParseImageFileName(string& fileName, string& ext);
 };

@@ -29,7 +29,7 @@
 #include "opencv2/opencv.hpp"
 
 using namespace std;
-using namespace cv;
+//using namespace cv;
 
 #define ELEM(type,m_start,step,size,xpos,ypos) *((type*)(m_start+step*(ypos)+(xpos)*size))
 #define ELEM3(type,m_start,step,size,xpos,ypos,ichannel) \
@@ -87,14 +87,14 @@ typedef vector<bool> vectorb;
 typedef vector<uchar> vectoru;
 typedef vector<ushort> vectorus;
 typedef vector<string> vectorString;
-typedef Point2f PointF;
+typedef cv::Point2f PointF;
 typedef vector<PointF> PointSetF;
-typedef vector<Point2i> PointSeti;
-typedef const Mat CMat;
+typedef vector<cv::Point2i> PointSeti;
+typedef const cv::Mat CMat;
 typedef const string CStr;
-typedef vector<Mat> MatSet; 
-typedef vector<Mat> ImageSet; 
-typedef vector<Rect> Rects; 
+typedef vector<cv::Mat> MatSet; 
+typedef vector<cv::Mat> ImageSet; 
+typedef vector<cv::Rect> Rects; 
 // basic utility functions
 inline int roundInt(double v) {
     return int((v < 0) ? (v - 0.5) : (v + 0.5));

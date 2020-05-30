@@ -6,17 +6,17 @@ namespace ImageTools
 {
 	class CImageTools {
 	public: 
-		static Rect GetDrawingROI(const PointSeti& _points); 
-		static Mat TranslateImage( const Mat& _img, PointF _p);
-		static Mat ScaleImage(const Mat& _img, float _scale); 
-		static Mat RandomImage(const Mat& _img); 
-		static Mat Float2Unit(const Mat& _img);
-		static bool IsValidROI(Rect _roi, Size _imgSz);
-		static Mat IncreaseContrast(const Mat& _img); 
-		static Rect RecfityROI(Rect _roi, Size _imgSz);
-        static Rect Mask2ROI(const Mat& _mask);
-        static PointF ROICenter(Rect roi);
-        static bool IsValidPoint(PointF _p, Size _imgSz);
+		static cv::Rect GetDrawingROI(const PointSeti& _points); 
+		static cv::Mat TranslateImage( const cv::Mat& _img, PointF _p);
+		static cv::Mat ScaleImage(const cv::Mat& _img, float _scale);
+		static cv::Mat RandomImage(const cv::Mat& _img);
+		static cv::Mat Float2Unit(const cv::Mat& _img);
+		static bool IsValidROI(cv::Rect _roi, cv::Size _imgSz);
+		static cv::Mat IncreaseContrast(const cv::Mat& _img);
+		static cv::Rect RecfityROI(cv::Rect _roi, cv::Size _imgSz);
+        static cv::Rect Mask2ROI(const cv::Mat& _mask);
+        static PointF ROICenter(cv::Rect roi);
+        static bool IsValidPoint(PointF _p, cv::Size _imgSz);
 	};
 }
 #endif //IMAGE_TOOLS_H_

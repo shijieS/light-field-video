@@ -8,28 +8,28 @@ const int MAX_FILENAME_LENGTH = 512;
 #include "windows.h"
 int utility::CUtility::FindImageFiles(string fName, vector<string>& nameVec,
         vector<string> &extVec) {
-    _assert(fName.length() != 0);
+    assert(fName.length() != 0);
 
-    WIN32_FIND_DATA fileName;
+    WIN32_FIND_DATAW fileName;
     WCHAR wch_fileName[MAX_FILENAME_LENGTH];
 
     fName += "*.*";
     MultiByteToWideChar(0, 0, fName.c_str(), MAX_FILENAME_LENGTH - 1,
             wch_fileName, MAX_FILENAME_LENGTH);
     LPCWSTR wstr_fileName = wch_fileName;
-    HANDLE handle = FindFirstFile(wstr_fileName, &fileName);
+    HANDLE handle = FindFirstFileW(wstr_fileName, &fileName);
     int nFiles = 0;
 
     if (handle != INVALID_HANDLE_VALUE) {
         do {
-            int nLen = lstrlen(fileName.cFileName);
+            int nLen = lstrlenW(fileName.cFileName);
             char* nPtr = new char[nLen + 1];
             nFiles++;
 
             FOR (i, nLen)
                 nPtr[i] = char(fileName.cFileName[i]);
 
-            nPtr[lstrlen(fileName.cFileName)] = '\0';
+            nPtr[lstrlenW(fileName.cFileName)] = '\0';
 
             if (nFiles != 1 && nFiles != 2) {
                 string strFileName = string(nPtr);
@@ -39,7 +39,7 @@ int utility::CUtility::FindImageFiles(string fName, vector<string>& nameVec,
                     extVec.push_back(ext);
                 }
             }
-        } while (FindNextFile(handle, &fileName));
+        } while (FindNextFileW(handle, &fileName));
     } else
         DEBUG_ERROR("Fail to open folder.");
 
@@ -56,9 +56,8 @@ void utility::CUtility::mkdirs( vector<string> _dirNameVec ) {
 }
 
 int utility::CUtility::FindFiles( string _fName, vector<string>& _nameVec ) {
-    _assert(_fName.length() != 0);
-
-    WIN32_FIND_DATA fileName;
+    assert(_fName.length() != 0);
+    WIN32_FIND_DATAW fileName;
     WCHAR wch_fileName[MAX_FILENAME_LENGTH];
 
     _fName += "*.*";
@@ -67,23 +66,23 @@ int utility::CUtility::FindFiles( string _fName, vector<string>& _nameVec ) {
     MultiByteToWideChar(0, 0, chr, MAX_FILENAME_LENGTH,
         wch_fileName, MAX_FILENAME_LENGTH);
     LPCWSTR wstr_fileName = wch_fileName;
-    HANDLE handle = FindFirstFile(wstr_fileName, &fileName);
+    HANDLE handle = FindFirstFileW(wstr_fileName, &fileName);
     int nFiles = 0;
 
     if (handle != INVALID_HANDLE_VALUE) {
         do {
-            int nLen = lstrlen(fileName.cFileName);
+            int nLen = lstrlenW(fileName.cFileName);
             char* nPtr = new char[nLen + 1];
             nFiles++;
 
             FOR (i, nLen)
                 nPtr[i] = char(fileName.cFileName[i]);
 
-            nPtr[lstrlen(fileName.cFileName)] = '\0';
+            nPtr[lstrlenW(fileName.cFileName)] = '\0';
             string strFileName = string(nPtr);
             if (nFiles != 1 && nFiles != 2)
                 _nameVec.push_back(strFileName);
-        } while (FindNextFile(handle, &fileName));
+        } while (FindNextFileW(handle, &fileName));
     } else
         DEBUG_ERROR("Fail to open folder.");
 

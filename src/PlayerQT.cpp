@@ -11,7 +11,9 @@
 #endif
 void qSleep(int ms)
 {
-    assert(ms > 0);
+	if (ms <= 0)
+		ms = 1;
+    //assert(ms > 0);
 
 #ifdef Q_OS_WIN
     Sleep(uint(ms));
@@ -105,7 +107,7 @@ void CPlayerView::paint(QPainter* _p) {
     _p->save();
     _p->setRenderHint(QPainter::Antialiasing);
     _p->setRenderHint(QPainter::SmoothPixmapTransform);
-    Mat tmp;
+    cv::Mat tmp;
     if (m_changeView) {
         float dx = (m_cursor.x() - m_oldCursor.x()) / m_scale;
         float dy = (m_cursor.y() - m_oldCursor.y()) / m_scale;
@@ -117,7 +119,7 @@ void CPlayerView::paint(QPainter* _p) {
         tmp = m_lfv->RenderLF(m_frameId, m_alpha, m_aperture);
     if (!tmp.empty()) {
         cvtColor(tmp, tmp, CV_BGR2RGB);
-        cv::resize(tmp, tmp, Size(), m_scale, m_scale);
+        cv::resize(tmp, tmp, cv::Size(), m_scale, m_scale);
         QImage img = QImage(tmp.data, tmp.cols, tmp.rows, tmp.cols*3, QImage::Format_RGB888);
         _p->drawImage(QPoint(0,0), img);
     }

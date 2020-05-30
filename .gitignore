@@ -96,3 +96,10 @@ ENV/
 
 # Rope project settings
 .ropeproject
+
+data/cats
+data/dance
+data/train1
+data/train2
+
+.vscode
